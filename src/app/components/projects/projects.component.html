@@ -14,7 +14,10 @@
   <!-- Project Cards -->
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let project of filteredProjects">
-      <div class="card shadow-sm h-100" (click)="selectProject(project)" data-bs-toggle="modal" data-bs-target="#projectModal">
+      <div class="card shadow-sm h-100"
+           (click)="selectProject(project)"
+           data-bs-toggle="modal"
+           data-bs-target="#projectModal">
         <img [src]="project.image" class="card-img-top" alt="{{ project.title }}">
         <div class="card-body">
           <h5 class="card-title">{{ project.title }}</h5>
@@ -27,15 +30,18 @@
 
 <!-- Project Modal -->
 <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{{ selectedProject?.title }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <img [src]="selectedProject?.image" class="img-fluid mb-3" alt="{{ selectedProject?.title }}">
+        <img [src]="selectedProject?.image" class="img-fluid mb-3 rounded" alt="{{ selectedProject?.title }}">
         <p>{{ selectedProject?.description }}</p>
+        <a *ngIf="selectedProject"  target="_blank" class="btn btn-primary">
+          View Project
+        </a>
       </div>
     </div>
   </div>
